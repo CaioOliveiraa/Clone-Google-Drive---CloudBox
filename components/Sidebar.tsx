@@ -6,7 +6,13 @@ import { usePathname } from 'next/navigation'
 import { navItems } from '@/constants'
 import { cn } from '@/lib/utils'
 
-const Sidebar = () => {
+interface props {
+    fullName: string
+    avatar: string
+    email: string
+}
+
+const Sidebar = ({ fullName, avatar, email }: props) => {
 
     const pathname = usePathname()
 
@@ -43,13 +49,35 @@ const Sidebar = () => {
                                         'nav-icon', pathname === url && 'nav-icon-active'
                                     )}
                                 />
-                                <p>{name}</p>
+                                <p className='hidden lg:block'>{name}</p>
                             </li>
                         </Link>
-
                     ))}
                 </ul>
             </nav>
+
+            <Image
+                src="/assets/images/files-2.png"
+                alt='logo'
+                width={506}
+                height={418}
+                className='w-full'
+            />
+
+            <div className='sidebar-user-info'>
+                <Image
+                    src={avatar}
+                    alt='avatar'
+                    width={44}
+                    height={44}
+                    className='sidebar-user-avatar'
+                />
+
+                <div className='hidden lg:block'>
+                    <p className='subtitle-2 capitalize'>{fullName}</p>
+                    <p className='caption'>{email}</p>
+                </div>
+            </div>
         </aside>
     )
 }

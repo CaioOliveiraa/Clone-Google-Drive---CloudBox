@@ -1,10 +1,11 @@
 "use server";
 
-import { createAdminClient } from "@/lib/appwrite";
+import { createAdminClient, createSessionClient } from "@/lib/appwrite";
 import { appwriteConfig } from "@/lib/appwrite/config";
 import { Query , ID } from "node-appwrite";
 import { parseStringify } from "../utils";
 import {cookies} from "next/headers";
+import { avatarPlaceholderUrl } from "@/constants";
 
 const getUserByEmail = async (email: string) => {
     const {databases} = await createAdminClient();
@@ -33,8 +34,8 @@ export const sendEmailOTP = async ({email}: { email: string }) => {
     }
 };
 
-export const createAccount = async ({ fullname, email }: { fullname: string, email: string }) => {
-    console.log("Starting createAccount with:", { fullname, email });
+export const createAccount = async ({ fullName, email }: { fullName: string, email: string }) => {
+    console.log("Starting createAccount with:", { fullName, email });
 
     try {
         const existingUser = await getUserByEmail(email);
@@ -56,9 +57,9 @@ export const createAccount = async ({ fullname, email }: { fullname: string, ema
                 appwriteConfig.usersCollectionId,
                 ID.unique(),
                 {
-                    fullname,
+                    fullName,
                     email,
-                    avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
+                    avatar: avatarPlaceholderUrl,
                     accountId,
                 }
             );
@@ -78,7 +79,7 @@ export const verifySecret = async ({accountId, password}: {accountId: string, pa
 
         const session = await account.createSession(accountId, password);
 
-        (await cookies()).set("appwrite_session", session.$id, {
+        (await cookies()).set("appwrite-session", session.secret, {
             path: "/",
             httpOnly: true,
             sameSite: "strict",
@@ -92,3 +93,33 @@ export const verifySecret = async ({accountId, password}: {accountId: string, pa
     }
 }
 
+export const getCurrentUser = async () => {
+    const {databases, account} = await createSessionClient();
+
+    const result = await account.get();
+
+    const user = await databases.listDocuments(
+        appwriteConfig.databaseId,
+        appwriteConfig.usersCollectionId,
+        [Query.equal("accountId", result.$id)]
+    );
+    
+    if(user.total <= 0) return null;
+
+    return user.documents[0];
+}
+
+export const signInUser = async ({ email }: { email: string }) => {
+    try {
+        const existingUser = await getUserByEmail(email);
+    
+        if (existingUser) {
+            await sendEmailOTP({ email });
+            return parseStringify({ accountId: existingUser.accountId });
+        }
+
+        return parseStringify({ accountId: null, error: "User not found" });
+    } catch (error) {
+        handleError(error, "Failed to sign in user");
+    }
+};

@@ -4,3 +4,5 @@ export const navItems = [
     {name: "Images", icon: "/assets/icons/images.svg", url: "/images"},
     {name: "Others", icon: "/assets/icons/others.svg", url: "/others"},
 ];
+
+export const avatarPlaceholderUrl = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
