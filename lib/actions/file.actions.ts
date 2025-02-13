@@ -82,7 +82,7 @@ export const getFiles = async () => {
             queries,
         );
 
-        console.log(currentUser, queries);        
+        // console.log(currentUser, queries);        
         return parseStringify(files);
 
     } catch (error) {
