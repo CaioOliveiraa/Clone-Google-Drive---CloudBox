@@ -23,8 +23,13 @@ import { actionsDropdownItems } from '@/constants';
 import Link from 'next/link';
 import { constructDownloadUrl } from '@/lib/utils';
 import { Button } from './ui/button';
+import { usePathname } from 'next/navigation';
+import { renameFile } from '@/lib/actions/file.actions';
+import { FileDetails } from '@/components/ActionsModalContent';
 
 const ActionDropdown = ({ file }: { file: Models.Document }) => {
+
+    const path = usePathname();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -40,7 +45,21 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     }
 
     const handleAction = async () => {
+        if (!action) return;
 
+        setIsLoading(true);
+        let success = false
+
+        const actions = {
+            rename: () => renameFile({ fileId: file.$id, name, extension: file.extension, path }),
+            share: () => console.log("share"),
+            delete: () => console.log("delete"),
+        }
+
+        success = await actions[action.value as keyof typeof actions]();
+
+        if (success) closeAllModals();
+        setIsLoading(false);
     }
 
     const renderDialogContent = () => {
@@ -63,6 +82,8 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
                             className='rename-input-field'
                         />
                     )}
+                    {value === "details" && <FileDetails file={file} />}
+
                 </DialogHeader>
                 {["rename", "delete", "share"].includes(value) && (
                     <DialogDescription className='flex flex-col gap-3 md:flex-row'>
