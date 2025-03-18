@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📂 **File Drive - Storage & File Sharing Platform**  
+Next.js | TypeScript | TailwindCSS | Appwrite
 
-## Getting Started
+Uma plataforma de armazenamento e compartilhamento de arquivos, onde o usuário pode fazer upload, gerenciar e compartilhar seus arquivos de forma simples e rápida.
 
-First, run the development server:
+---
 
+## 📚 **Tecnologias Utilizadas**
+- **React 19**
+- **Next.js 15**
+- **TypeScript**
+- **TailwindCSS**
+- **Appwrite**
+- **ShadCN**
+
+---
+
+## 🚀 **Principais Funcionalidades**
+✅ Autenticação de usuário (login, cadastro e logout) com Appwrite  
+✅ Upload de arquivos (imagens, vídeos, documentos e áudios)  
+✅ Visualização, renomeação e exclusão de arquivos  
+✅ Download direto dos arquivos  
+✅ Compartilhamento de arquivos com link  
+✅ Dashboard com resumo do armazenamento e uploads recentes  
+✅ Busca global e filtros por data, nome ou tamanho  
+✅ Interface moderna, responsiva e intuitiva  
+
+---
+
+## ⚡ **Como Rodar o Projeto**
+
+### Pré-requisitos
+- Git
+- Node.js
+- npm ou yarn
+
+### Passos
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd seu-repositorio
+```
+2. Instale as dependêcias:
+```bash
+npm install
+```
+3. Configure o arquivo .env.local na raiz do projeto:
+```bash
+NEXT_PUBLIC_APPWRITE_ENDPOINT=""
+NEXT_PUBLIC_APPWRITE_PROJECT=""
+NEXT_PUBLIC_APPWRITE_BUCKET=""
+NEXT_APPWRITE_KEY=""
+```
+4. Execute o projeto:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Acesse: [http://localhost:3000](http://localhost:3000)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ **Destaques**
+- Código limpo e organizado
+- Arquitetura escalável
+- Foco em performance e usabilidade
+- Aprendizado na prática com tecnologias modernas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔗 **Links Úteis**
+- [Repositório do Projeto](https://github.com/CaioOliveiraa/Clone-Google-Drive---Store-It)
+- [Appwrite](https://appwrite.io/)
+- [Next.js](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 💻 **Sobre o Projeto**
+Projeto pessoal desenvolvido para praticar e aplicar conceitos de Fullstack moderno, com foco em boas práticas, arquitetura de código e usabilidade.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sinta-se à vontade para explorar, dar uma ⭐ no repositório e contribuir! 🚀
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
