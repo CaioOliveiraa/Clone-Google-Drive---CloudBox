@@ -1,4 +1,4 @@
-# 📂 **CloudBox - Storage & File Sharing Platform**  
+# ☁️ **CloudBox - Storage & File Sharing Platform**  📦
 Next.js | TypeScript | TailwindCSS | Appwrite
 
 Uma plataforma de armazenamento e compartilhamento de arquivos, onde o usuário pode fazer upload, gerenciar e compartilhar seus arquivos de forma simples e rápida.
