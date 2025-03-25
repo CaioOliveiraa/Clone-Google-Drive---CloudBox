@@ -22,9 +22,9 @@ const Sidebar = ({ fullName, avatar, email }: props) => {
                 <Image
                     src="/assets/icons/logo-full-brand.svg"
                     alt='Logo'
-                    width={160}
+                    width={220}
                     height={50}
-                    className='hidden h-auto lg:block'
+                    className='ml-5 hidden h-auto lg:block'
                 />
                 <Image
                     src='/assets/icons/logo-brand.svg'

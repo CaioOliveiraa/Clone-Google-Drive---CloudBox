@@ -17,7 +17,7 @@ const Header = ({ userId, accountId }: { userId: string, accountId: string }) =>
                     await signOutUser();
                 }}>
                     <Button type="submit" className="sign-out-button">
-                        <Image src='/assets/icons/logout.svg' alt='logo' width={24} height={24} className="w-6" />
+                        <Image src='/assets/icons/logout.svg' alt='logo' width={24} height={24} className="mr-1 w-5" />
                     </Button>
                 </form>
             </div>
