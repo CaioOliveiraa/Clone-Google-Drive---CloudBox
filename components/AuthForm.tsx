@@ -59,7 +59,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
             setAccountId(user.accountId);
         } catch {
-            setErrorMessage("Failed to create account. Please try again.");
+            setErrorMessage("Falha ao criar usuário, tente novamente.");
         } finally {
             setIsLoading(false);
         }
@@ -84,7 +84,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
                                         <FormControl>
                                             <Input
-                                                placeholder="Enter your full name"
+                                                placeholder="Entre com o nome completo"
                                                 className="shad-input"
                                                 {...field}
                                             />
@@ -107,7 +107,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
                                     <FormControl>
                                         <Input
-                                            placeholder="Enter your Email"
+                                            placeholder="Entre com o seu Email"
                                             className="shad-input"
                                             {...field}
                                         />
@@ -142,8 +142,8 @@ const AuthForm = ({ type }: { type: FormType }) => {
                     <div className='body-2 flex justify-center'>
                         <p className='text-light-100'>
                             {type === 'sign-in'
-                                ? "Don't have an account? "
-                                : "Already have an account? "}
+                                ? "Ainda não possui uma conta? "
+                                : "Já possui uma conta? "}
                         </p>
                         <Link
                             href={type === 'sign-in' ? '/sign-up' : '/sign-in'}

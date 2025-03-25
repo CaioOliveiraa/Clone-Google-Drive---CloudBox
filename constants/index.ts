@@ -5,40 +5,40 @@ export const navItems = [
         url: "/",
     },
     {
-        name: "Documents",
+        name: "Documentos",
         icon: "/assets/icons/documents.svg",
-        url: "/documents",
+        url: "/documentos",
     },
     {
-        name: "Images",
+        name: "Imagens",
         icon: "/assets/icons/images.svg",
-        url: "/images",
+        url: "/imagens",
     },
     {
-        name: "Media",
+        name: "Midia",
         icon: "/assets/icons/video.svg",
-        url: "/media",
+        url: "/midia",
     },
     {
-        name: "Others",
+        name: "Outros",
         icon: "/assets/icons/others.svg",
-        url: "/others",
+        url: "/outros",
     },
     ];
 
     export const actionsDropdownItems = [
     {
-        label: "Rename",
+        label: "Renomear",
         icon: "/assets/icons/edit.svg",
         value: "rename",
     },
     {
-        label: "Details",
+        label: "Detalhes",
         icon: "/assets/icons/info.svg",
         value: "details",
     },
     {
-        label: "Share",
+        label: "Compartilhar",
         icon: "/assets/icons/share.svg",
         value: "share",
     },

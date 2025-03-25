@@ -33,7 +33,7 @@ export const calculatePercentage = (sizeInBytes: number) => {
 export const getFileType = (fileName: string) => {
   const extension = fileName.split(".").pop()?.toLowerCase();
 
-  if (!extension) return { type: "other", extension: "" };
+  if (!extension) return { type: "outro", extension: "" };
 
   const documentExtensions = [
     "pdf",
@@ -67,12 +67,12 @@ export const getFileType = (fileName: string) => {
   const audioExtensions = ["mp3", "wav", "ogg", "flac"];
 
   if (documentExtensions.includes(extension))
-    return { type: "document", extension };
-  if (imageExtensions.includes(extension)) return { type: "image", extension };
+    return { type: "documento", extension };
+  if (imageExtensions.includes(extension)) return { type: "imagem", extension };
   if (videoExtensions.includes(extension)) return { type: "video", extension };
   if (audioExtensions.includes(extension)) return { type: "audio", extension };
 
-  return { type: "other", extension };
+  return { type: "outro", extension };
 };
 
 export const formatDateTime = (isoString: string | null | undefined) => {
@@ -186,21 +186,21 @@ export const constructDownloadUrl = (bucketFileId: string) => {
 export const getUsageSummary = (totalSpace: any) => {
   return [
     {
-      title: "Documents",
+      title: "Documentos",
       size: totalSpace.document.size,
       latestDate: totalSpace.document.latestDate,
       icon: "/assets/icons/file-document-light.svg",
       url: "/documents",
     },
     {
-      title: "Images",
+      title: "Imagens",
       size: totalSpace.image.size,
       latestDate: totalSpace.image.latestDate,
       icon: "/assets/icons/file-image-light.svg",
       url: "/images",
     },
     {
-      title: "Media",
+      title: "Midia",
       size: totalSpace.video.size + totalSpace.audio.size,
       latestDate:
         totalSpace.video.latestDate > totalSpace.audio.latestDate
@@ -210,7 +210,7 @@ export const getUsageSummary = (totalSpace: any) => {
       url: "/media",
     },
     {
-      title: "Others",
+      title: "Outros",
       size: totalSpace.other.size,
       latestDate: totalSpace.other.latestDate,
       icon: "/assets/icons/file-other-light.svg",
@@ -221,7 +221,7 @@ export const getUsageSummary = (totalSpace: any) => {
 
 export const getFileTypesParams = (type: string) => {
   switch (type) {
-    case "documents":
+    case "documentos":
       return ["document"];
     case "images":
       return ["image"];

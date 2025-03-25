@@ -31,7 +31,7 @@ export const sendEmailOTP = async ({email}: { email: string }) => {
         const session = await account.createEmailToken(ID.unique(), email);
     return session.userId;
     } catch (error) {
-        handleError(error, "Failed to create email token");
+        handleError(error, "Falha ao criar token de email");
     }
 };
 
@@ -64,7 +64,7 @@ export const createAccount = async ({ fullName, email }: { fullName: string, ema
                     accountId,
                 }
             );
-            console.log("New user created successfully.");
+            console.log("Novo usuário criado com sucesso.");
         }
 
         return parseStringify({ accountId });

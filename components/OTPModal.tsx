@@ -53,7 +53,7 @@ const OtpModal = ({ accountId, email }: { accountId: string, email: string }) =>
             <AlertDialogContent className="shad-alert-dialog">
                 <AlertDialogHeader className="relative flex justify-center">
                     <AlertDialogTitle className="h2 text-center">
-                        Enter Your OTP
+                        Digite seu OTP
                         <Image
                             src="/assets/icons/close-dark.svg"
                             alt="close"
@@ -64,7 +64,7 @@ const OtpModal = ({ accountId, email }: { accountId: string, email: string }) =>
                         />
                     </AlertDialogTitle>
                     <AlertDialogDescription className="subtitle-2 text-center text-light-100">
-                        We&apos;ve sent a code to <span className="pl-1 text-brand">{email}</span>
+                        Nos enviamos um código para<span className="pl-1 text-brand">{email}</span>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
 
@@ -82,7 +82,7 @@ const OtpModal = ({ accountId, email }: { accountId: string, email: string }) =>
                 <AlertDialogFooter>
                     <div className="flex w-full flex-col gap-4">
                         <AlertDialogAction onClick={handleSubmit} className="shad-submit-btn h-12" type="button">
-                            Submit
+                            Enviar
                             {isLoading && (
                                 <Image
                                     src="/assets/icons/loader.svg"
@@ -95,14 +95,14 @@ const OtpModal = ({ accountId, email }: { accountId: string, email: string }) =>
                         </AlertDialogAction>
 
                         <div className="subtitle-2 mt-2 text-center text-light-100">
-                            Didn&apos; receive the code?
+                            Não recebeu o código?
                             <Button
                                 type="button"
                                 variant="link"
                                 className="pl-1 text-brand"
                                 onClick={handleResendOtp}
                             >
-                                Click to recend
+                                Clique para reenviar
                             </Button>
                         </div>
                     </div>
