@@ -120,18 +120,24 @@ export const getCurrentUser = async () => {
 
 
 export const signOutUser = async () => {
-    
-    const {account} = await createSessionClient();
-    
+    const client = await createSessionClient();
+
+    if (!client) {
+        console.warn("Nenhum cliente de sessão encontrado ao fazer logout.");
+        return redirect("/sign-in");
+    }
+
     try {
-        await account.deleteSession("current");
-        (await cookies()).delete("appwrite-session");
+        await client.account.deleteSession("current");
+
+        const cookieStore = await cookies();
+        cookieStore.delete("appwrite-session");
     } catch (error) {
         handleError(error, "Failed to sign out user");
-    } finally{
+    } finally {
         redirect("/sign-in");
     }
-}
+};
 
 export const signInUser = async ({ email }: { email: string }) => {
     try {
