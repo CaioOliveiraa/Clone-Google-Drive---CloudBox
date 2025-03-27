@@ -95,20 +95,30 @@ export const verifySecret = async ({accountId, password}: {accountId: string, pa
 }
 
 export const getCurrentUser = async () => {
-    const {databases, account} = await createSessionClient();
+    const client = await createSessionClient();
 
-    const result = await account.get();
+    // Se não houver sessão, retorna null sem quebrar o SSR
+    if (!client) return null;
 
-    const user = await databases.listDocuments(
+    try {
+        const { databases, account } = client;
+
+        const result = await account.get();
+
+        const user = await databases.listDocuments(
         appwriteConfig.databaseId,
         appwriteConfig.usersCollectionId,
         [Query.equal("accountId", result.$id)]
     );
-    
-    if(user.total <= 0) return null;
+
+    if (user.total <= 0) return null;
 
     return user.documents[0];
-}
+    } catch (err) {
+        console.warn("Erro ao obter usuário logado:", err);
+        return null;
+    }
+};
 
 
 export const signOutUser = async () => {
