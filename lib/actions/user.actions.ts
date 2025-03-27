@@ -101,19 +101,17 @@ export const getCurrentUser = async () => {
     if (!client) return null;
 
     try {
-        const { databases, account } = client;
+        const result = await client.account.get();
 
-        const result = await account.get();
-
-        const user = await databases.listDocuments(
-        appwriteConfig.databaseId,
-        appwriteConfig.usersCollectionId,
-        [Query.equal("accountId", result.$id)]
+        const user = await client.databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.usersCollectionId,
+            [Query.equal("accountId", result.$id)]
     );
 
-    if (user.total <= 0) return null;
+        if (user.total <= 0) return null;
 
-    return user.documents[0];
+        return user.documents[0];
     } catch (err) {
         console.warn("Erro ao obter usuário logado:", err);
         return null;
