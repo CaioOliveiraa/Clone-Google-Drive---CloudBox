@@ -3,14 +3,15 @@
 import { Account, Client, Databases, Avatars, Storage } from "node-appwrite";	
 import { appwriteConfig } from "@/lib/appwrite/config";
 import { cookies } from "next/headers";
+
 export const createSessionClient = async () => {
     const client = new Client()
         .setEndpoint(appwriteConfig.endpointUrl)
         .setProject(appwriteConfig.projectId);
 
     const session = (await cookies()).get('appwrite-session');
-    
-    if(!session || !session.value) throw new Error("No session found");
+
+    if (!session || !session.value) throw new Error("No session found");
 
     client.setSession(session.value);
 
