@@ -33,7 +33,7 @@ export const calculatePercentage = (sizeInBytes: number) => {
 export const getFileType = (fileName: string) => {
   const extension = fileName.split(".").pop()?.toLowerCase();
 
-  if (!extension) return { type: "outro", extension: "" };
+  if (!extension) return { type: "other", extension: "" };
 
   const documentExtensions = [
     "pdf",
@@ -60,19 +60,18 @@ export const getFileType = (fileName: string) => {
     "sketch",
     "afdesign",
     "afphoto",
-    "afphoto",
   ];
   const imageExtensions = ["jpg", "jpeg", "png", "gif", "bmp", "svg", "webp"];
   const videoExtensions = ["mp4", "avi", "mov", "mkv", "webm"];
   const audioExtensions = ["mp3", "wav", "ogg", "flac"];
 
   if (documentExtensions.includes(extension))
-    return { type: "documento", extension };
-  if (imageExtensions.includes(extension)) return { type: "imagem", extension };
+    return { type: "document", extension };
+  if (imageExtensions.includes(extension)) return { type: "image", extension };
   if (videoExtensions.includes(extension)) return { type: "video", extension };
   if (audioExtensions.includes(extension)) return { type: "audio", extension };
 
-  return { type: "outro", extension };
+  return { type: "other", extension }; // corrigido aqui!
 };
 
 export const formatDateTime = (isoString: string | null | undefined) => {
@@ -112,7 +111,7 @@ export const formatDateTime = (isoString: string | null | undefined) => {
 
 export const getFileIcon = (
   extension: string | undefined,
-  type: FileType | string,
+  type: FileType | string
 ) => {
   switch (extension) {
     // Document
